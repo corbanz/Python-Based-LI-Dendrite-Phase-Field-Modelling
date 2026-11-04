@@ -1,0 +1,51 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Simulation output (large and regenerable) ---
+results/
+output/
+runs/
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.mp4
+*.avi
+*.gif
+
+# Keep a small set of curated figures for the README/docs
+!docs/figures/
+!docs/figures/**
+
+# --- Reference papers (copyrighted; keep local, don't commit) ---
+papers/
+*.pdf
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Secrets / local config ---
+.env
+*.local
