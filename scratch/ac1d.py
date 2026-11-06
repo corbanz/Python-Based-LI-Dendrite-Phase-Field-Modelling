@@ -12,7 +12,12 @@ xi = rng.standard_normal(N)*.02+0.5 #store the generated random variables in a v
 steps = 2000
 count = 1
 xi0=xi.copy()
-dt = 0.1 * dx**2 / (M * kappa)
+r = 0.1  # smoothing parameter
+dt = r * dx**2 / (M * kappa) 
+# NOTE TO SELF: a point moves by ξ_new = ξ + 2r·(average of its neighbors − ξ)
+# If r is small, each step moves the point a fraction of the way toward its neighbors’ average, which is smoothing.
+# At r = 0.5, one step carries the point exactly to that average.
+# Above 0.5, it overshoots past the average.
 while count <= steps:
         count += 1
         lap = np.zeros(N)
@@ -27,5 +32,4 @@ while count <= steps:
 plt.plot(x, xi0)
 plt.plot(x, xi_new)
 plt.show()
-
-
+print(xi.min(), xi.max())
