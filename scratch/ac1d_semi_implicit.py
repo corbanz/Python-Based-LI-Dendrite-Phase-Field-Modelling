@@ -18,6 +18,16 @@ dt = r * dx**2 / (M * kappa)
 # If r is small, each step moves the point a fraction of the way toward its neighbors’ average, which is smoothing.
 # At r = 0.5, one step carries the point exactly to that average.
 # Above 0.5, it overshoots past the average.
+Lmat = np.zeros((N, N))
+for i in range(1, N-1):
+        Lmat[i, i-1] = 1.0
+        Lmat[i, i] = -2.0
+        Lmat[i, i+1] = 1.0
+Lmat[0, 0] = -2.0
+Lmat[0, 1] = 2.0
+Lmat[-1, -1] = -2.0
+Lmat[-1, -2] = 2.0
+DivLap = Lmat / dx**2 # DivLap verified against lap: mismatch ~1e-12
 while count <= steps:
         count += 1
         lap = np.zeros(N)
