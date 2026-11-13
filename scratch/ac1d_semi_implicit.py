@@ -28,6 +28,7 @@ Lmat[0, 1] = 2.0
 Lmat[-1, -1] = -2.0
 Lmat[-1, -2] = 2.0
 DivLap = Lmat / dx**2 # DivLap verified against lap: mismatch ~1e-12
+A=np.eye(N)-dt*M*kappa*DivLap #semi-implicit matrix
 while count <= steps:
         count += 1
         lap = np.zeros(N)
